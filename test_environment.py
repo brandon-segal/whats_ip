@@ -1,4 +1,5 @@
 import sys
+import src.data.make_dataset
 
 REQUIRED_PYTHON = "python3"
 
