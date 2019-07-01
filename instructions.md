@@ -31,4 +31,8 @@ The hypothetical use case for this feature is the organization has multiple sour
 
 For this application we are going have a TDD methodology to develop a Entity Recognition tool that takes in a string and returns a map of IP addresses and names. 
 
-This tool works via the make 
+## Entitiy Classifier API
+
+The entity classifier API is a class that instantiates a Spacy language model and optional additional entity labels in either a dict or file format. If there is a file format it is expected in a jsonl format and is read into a Entity Ruler where it runs rules over each tokenized string before the named entity recognition step of the spacy object. 
+
+To instantiate a 

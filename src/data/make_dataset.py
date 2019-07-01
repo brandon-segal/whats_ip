@@ -14,7 +14,7 @@ def readlines(path, pattern='*.txt'):
         for line in open(fname, 'r'):
             yield line
 
-            
+
 @click.command()
 @click.option('patterns', '-p', type=click.Path(exists=True))
 @click.argument('input_filepath', type=click.STRING)
