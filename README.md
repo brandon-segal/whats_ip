@@ -94,3 +94,19 @@ ex:
 ```
 
 ## Tests 
+
+There are tests written with unittests to check the functionality of the EntityClassifier class. These can be found within the entitiy classifier folder in the data folder. These tests can be run using 
+
+## Solving environments
+
+The environment for this project can be copied by creating an environment from the environment.yaml file using the command :
+`conda env create --file environment.yaml` 
+
+## Using the Entity Classifier
+
+After solving for the environment it is time to use the EntityClassifier.
+To see the entity classifier in action run the make_dataset.py file in ./src/data with the following arguments: 
+
+`python ./src/data/make_dataset.py -p ./src/data/ip_address_rules.jsonl ./data/raw/ ./data/processed/entities.json` 
+
+This will take all of the text files in the raw data folder and output the json file of all named entities that are either people or IP addresses

@@ -14,12 +14,13 @@ class EntityClassifier:
 
     @regex.setter
     def regex(self, value):
-        if type(value) == list or type(value) == dict:
-            self._ruler = EntityRuler(self.model)
-            self._ruler.add_patterns(value)
-        else:
-            self._ruler = EntityRuler(self.model).from_disk(value)
-        self.model.add_pipe(self._ruler, before='ner')
+        if value is not None:
+            if type(value) == list or type(value) == dict:
+                self._ruler = EntityRuler(self.model)
+                self._ruler.add_patterns(value)
+            else:
+                self._ruler = EntityRuler(self.model).from_disk(value)
+            self.model.add_pipe(self._ruler, before='ner')
 
     def get_entities(self, doc):
         doc = self.model(doc)
@@ -38,10 +39,10 @@ def main():
         {"label": "IP", "pattern": [{'TEXT': {"REGEX": ipv4_re}}]},
         {"label": "IP", "pattern": [{'TEXT': {"REGEX": ipv6_re}}]}
     ]
-    test(patterns, tests)
+    create_rules_file(patterns, tests)
 
 
-def test(patterns, tests):
+def create_rules_file(patterns, tests):
     entity_classifier = EntityClassifier(regex=patterns)
     for test in tests:
         entity_classifier.get_entities(test)
